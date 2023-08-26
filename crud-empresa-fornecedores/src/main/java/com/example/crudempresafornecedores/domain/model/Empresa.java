@@ -1,11 +1,12 @@
 package com.example.crudempresafornecedores.domain.model;
 
-import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,7 @@ public class Empresa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100, name = "cnpj")
+    @Column(nullable = false, length = 100, name = "cnpj", unique = true)
     private String cnpj;
 
     @Column(nullable = false, length = 100, name = "nome_fantasia")
@@ -28,7 +29,15 @@ public class Empresa {
     @Column(nullable = false, length = 100, name = "cep")
     private String cep;
 
-    @OneToMany(mappedBy = "empresa",cascade = CascadeType.REMOVE)
-    private List<Fornecedor> fornecedores;
+    @Column(nullable = false, length = 100, name = "estado")
+    private String estado;
+
+    @ManyToMany
+    @JoinTable(
+            name = "empresa_fornecedor",
+            joinColumns = @JoinColumn(name = "empresa_id"),
+            inverseJoinColumns = @JoinColumn(name = "fornecedor_id")
+    )
+    private List<Fornecedor> fornecedores = new ArrayList<>();
 
 }

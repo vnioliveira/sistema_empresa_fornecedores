@@ -5,8 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
     @Query("SELECT e FROM Empresa e WHERE LOWER(e.nomeFantasia) LIKE LOWER(concat('%', :nome, '%'))")
     Empresa getEmpresaByNomeFantasia(String nome);
+
+    List<Empresa> findByCnpjContaining(String cnpj);
 }

@@ -4,22 +4,20 @@ package com.example.crudempresafornecedores.domain.service;
 import com.example.crudempresafornecedores.domain.model.Fornecedor;
 import com.example.crudempresafornecedores.domain.repository.FornecedorRepository;
 import com.example.crudempresafornecedores.rest.dto.FornecedorDTO;
+import com.example.crudempresafornecedores.rest.dto.PostFonecedorDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class FornecedorService {
+public class FornecedorService extends ClasseBase {
     private final FornecedorRepository fornecedorRepository;
-
-    public void cadastrarFornecedor(FornecedorDTO dto) {
-        Fornecedor fornecedor = buildFornecedor(dto);
+    public void cadastrarFornecedor(PostFonecedorDTO dto) {
+        Fornecedor fornecedor = buildPostFornecedor(dto);
         fornecedorRepository.save(fornecedor);
     }
     public ResponseEntity<FornecedorDTO> buscarFornecedorPorNome(String nome) {
@@ -29,18 +27,13 @@ public class FornecedorService {
     }
 
     public List<FornecedorDTO> listarFornecedores() {
-        List<Fornecedor>
-                fornecedors = fornecedorRepository.findAll();
-
-        return fornecedors.stream()
-                .map(this::buildFornecedorDTO)
-                .collect(Collectors.toList());
-
+        List<Fornecedor> fornecedores = fornecedorRepository.findAll();
+        return buildFornecedoresDTOs(fornecedores);
     }
 
-    public ResponseEntity<Object> atualizarFornecedor(Long id, FornecedorDTO dto) {
+    public ResponseEntity<Object> atualizarFornecedor(Long id, PostFonecedorDTO dto) {
         if (fornecedorRepository.existsById(id)) {
-            Fornecedor fornecedorAtualizada = buildFornecedor(dto);
+            Fornecedor fornecedorAtualizada = buildPostFornecedor(dto);
             fornecedorAtualizada.setId(id);
             fornecedorRepository.save(fornecedorAtualizada);
             return ResponseEntity.noContent().build();
@@ -57,27 +50,10 @@ public class FornecedorService {
         return ResponseEntity.notFound().build();
     }
 
-    public FornecedorDTO buildFornecedorDTO(Fornecedor fornecedor) {
-        return FornecedorDTO.builder()
-                .cnpjCpf(fornecedor.getCnpjCpf())
-                .nome(fornecedor.getNome())
-                .email(fornecedor.getEmail())
-                .cep(fornecedor.getCep())
-                .rg(fornecedor.getRg())
-                .dataNascimento(fornecedor.getDataNascimento())
-                .empresa(fornecedor.getEmpresa())
-                .build();
+    public ResponseEntity<List<FornecedorDTO>> buscarFornecedoresPorCnpjCpf(String cnpjCpf) {
+        List<Fornecedor> fornecedores  = fornecedorRepository.findByCnpjCpfContaining(cnpjCpf);
+        List<FornecedorDTO> fornecedorDTOS = buildFornecedoresDTOs(fornecedores);
+        return ResponseEntity.ok(fornecedorDTOS);
     }
 
-    public static Fornecedor buildFornecedor(FornecedorDTO dto) {
-        return Fornecedor.builder()
-                .cnpjCpf(dto.getCnpjCpf())
-                .nome(dto.getNome())
-                .email(dto.getEmail())
-                .cep(dto.getCep())
-                .rg(dto.getRg())
-                .dataNascimento(dto.getDataNascimento())
-                .empresa(dto.getEmpresa())
-                .build();
-    }
 }

@@ -2,11 +2,12 @@ package com.example.crudempresafornecedores.rest;
 
 import com.example.crudempresafornecedores.domain.service.FornecedorService;
 import com.example.crudempresafornecedores.rest.dto.FornecedorDTO;
-import javax.transaction.Transactional;
+import com.example.crudempresafornecedores.rest.dto.PostFonecedorDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.net.URI;
 import java.util.List;
 
@@ -14,34 +15,39 @@ import java.util.List;
 @RequestMapping("/fornecedores")
 @RequiredArgsConstructor
 public class FornecedorResource {
-    
-    FornecedorService fornecedorService;
 
+     private final FornecedorService fornecedorServiceImpl;
 
     @PostMapping
-    public ResponseEntity<Object> cadastrarFornecedor(@RequestBody FornecedorDTO dto) {
-        fornecedorService.cadastrarFornecedor(dto);
+    @Transactional
+    public ResponseEntity<Object> cadastrarFornecedor(@RequestBody PostFonecedorDTO dto) {
+        fornecedorServiceImpl.cadastrarFornecedor(dto);
         return ResponseEntity.created(URI.create("/fornecedores")).build();
     }
 
     @GetMapping("/name/{nome}")
     public ResponseEntity<FornecedorDTO> buscarFornecedorPorNome(@PathVariable String nome) {
-        return fornecedorService.buscarFornecedorPorNome(nome);
+        return fornecedorServiceImpl.buscarFornecedorPorNome(nome);
     }
 
     @GetMapping
     public List<FornecedorDTO> listarFornecedores() {
-        return fornecedorService.listarFornecedores();
+        return fornecedorServiceImpl.listarFornecedores();
     }
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<Object> atualizarFornecedor(@PathVariable Long id, @RequestBody FornecedorDTO dto) {
-        return fornecedorService.atualizarFornecedor(id, dto);
+    public ResponseEntity<Object> atualizarFornecedor(@PathVariable Long id, @RequestBody PostFonecedorDTO dto) {
+        return fornecedorServiceImpl.atualizarFornecedor(id, dto);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> removerFornecedor(@PathVariable Long id) {
-        return fornecedorService.removerFornecedor(id);
+        return fornecedorServiceImpl.removerFornecedor(id);
+    }
+
+    @GetMapping("/cnpj-cpf/{cnpjCpf}")
+    public ResponseEntity<List<FornecedorDTO>> buscarFornecedoresPorCnpjCpf(@PathVariable String cnpjCpf) {
+        return fornecedorServiceImpl.buscarFornecedoresPorCnpjCpf(cnpjCpf);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.crudempresafornecedores;
+package com.example.crudempresafornecedores.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

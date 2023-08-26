@@ -1,12 +1,14 @@
 package com.example.crudempresafornecedores.domain.model;
 
-import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "fornecedores")
@@ -19,7 +21,7 @@ public class Fornecedor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100, name = "cpf_cnpj")
+    @Column(nullable = false, length = 100, name = "cpf_cnpj" , unique = true)
     private String cnpjCpf;
 
     @Column(nullable = false, length = 100, name = "nome")
@@ -27,7 +29,6 @@ public class Fornecedor {
 
     @Column(nullable = false, length = 100, name = "email")
     private String email;
-
 
     @Column(nullable = false, length = 100, name = "cep")
     private String cep;
@@ -37,11 +38,13 @@ public class Fornecedor {
     private String rg;
 
 
-    @Column(nullable = false, length = 100, name = "dataNascimento")
+    @Column(nullable = false, length = 100, name = "data_nascimento")
     private LocalDate dataNascimento;
 
-    @ManyToOne
-    @JoinColumn(name = "empresa_id")
-    private Empresa empresa;
+    @Column(nullable = false, length = 100, name = "tipo")
+    private String tipo;
+
+    @ManyToMany(mappedBy = "fornecedores")
+    private List<Empresa> empresas = new ArrayList<>();
 
 }

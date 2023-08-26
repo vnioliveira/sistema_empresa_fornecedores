@@ -5,11 +5,10 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Data
 @Builder
-public class EmpresaDTO {
+public class PostEmpresaDTO {
     @NotNull
     @NotBlank
     private String cnpj;
@@ -23,5 +22,4 @@ public class EmpresaDTO {
     @NotBlank
     private String estado;
 
-    private List<FornecedorDTO> fornecedores;
 }

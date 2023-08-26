@@ -5,23 +5,29 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
-
+import java.time.LocalDate;
 @Data
 @Builder
-public class EmpresaDTO {
+public class PostFonecedorDTO {
     @NotNull
     @NotBlank
-    private String cnpj;
+    private String cnpjCpf;
     @NotNull
     @NotBlank
-    private String nomeFantasia;
+    private String nome;
+    @NotNull
+    @NotBlank
+    private String email;
     @NotNull
     @NotBlank
     private String cep;
     @NotNull
     @NotBlank
-    private String estado;
-
-    private List<FornecedorDTO> fornecedores;
+    private String rg;
+    @NotNull
+    @NotBlank
+    private LocalDate dataNascimento;
+    @NotNull
+    @NotBlank
+    private String tipo;
 }
