@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="buttons">
+    <button routerLink="" mat-raised-button color="primary">Voltar</button>
+  </div>
+    <h1>Gerenciando Fornecedores</h1>
+
+    <div class="filters">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input [(ngModel)]="filtroNome" (input)="buscarFornecedoresPorNome()" name="fornecedor.nome" matInput   placeholder="Filtrar por nome">
+    </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>RG</mat-label>
+        <input [(ngModel)]="filtroCnpjCpf"  (input)="carregarFornecedoresPorCnpjCpf()" name="fornecedor.rg" matInput  placeholder="Filtrar por CNPJ/CPF">
+    </mat-form-field>
+     
+    </div>
+
+
+  <div class="content" *ngFor="let item of fornecedores">
+    <mat-card class="mat-elevation-z8">
+      <mat-card-header>
+        <mat-card-title>{{ item.cnpjCpf }}</mat-card-title>
+        <mat-card-subtitle>{{ item.nome }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="info">
+          <div class="info-item">
+            <strong>Email:</strong> {{ item.email }}
+          </div>
+          <div class="info-item">
+            <strong>CEP:</strong> {{ item.cep }}
+          </div>
+          <div class="info-item">
+            <strong>RG:</strong> {{ item.rg }}
+          </div>
+          <div class="info-item">
+            <strong>Data de Nascimento:</strong> {{ item.dataNascimento }}
+          </div>
+          <div class="info-item">
+            <strong>Tipo:</strong> {{ item.tipo }}
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+
+        <button routerLink="editar-fornecedor/{{item.id}}"  mat-mini-fab color="accent">
+          <mat-icon>edit</mat-icon>
+      </button>
+      <button (click)="removerFornecedor(item.id)" mat-mini-fab color="warn">
+          <mat-icon>delete</mat-icon>
+      </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

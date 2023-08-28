@@ -1,0 +1,48 @@
+form {
+    width: 70%;
+    margin: 2rem auto 0 auto;
+    text-align: justify;
+}
+
+.data-finalizar {
+    text-align: start;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    color: #AF284B;
+}
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinhar os elementos no centro verticalmente */
+
+    /* Esticar os campos de entrada horizontalmente */
+    .example-full-width {
+        width: 100%; /* Ocupar 100% da largura disponível */
+    }
+}
+.mat-form-field-forms{
+    width: 90em;
+}
+ input[type="text"] {
+    width: 200px;
+} 
+.form {
+    width: 100%;
+    color: #35A78E;
+} 
+
+.buttons {
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    margin-right: .5rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}

@@ -10,7 +10,9 @@ import java.util.List;
 @Repository
 public interface FornecedorRepository extends JpaRepository<Fornecedor, Long> {
     @Query("SELECT f FROM Fornecedor f WHERE LOWER(f.nome) LIKE LOWER(concat('%', :nome, '%'))")
-    Fornecedor getFornecedorByNome(String nome);
+    List<Fornecedor> getFornecedoresByNome(String nome);
+
 
     List<Fornecedor> findByCnpjCpfContaining(String cnpjCpf);
+
 }

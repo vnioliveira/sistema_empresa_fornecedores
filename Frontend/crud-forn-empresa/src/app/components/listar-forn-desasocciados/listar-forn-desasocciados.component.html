@@ -1,0 +1,26 @@
+<button routerLink="" mat-raised-button color="primary">Voltar</button>
+
+<h1> Lista de Fornecedores Desassociados</h1>
+
+<div class="content" *ngFor="let item of fornecedores">
+    <mat-card class="mat-elevation-z8">
+        <mat-card-header>
+          <mat-card-title>{{item.cnpjCpf}}</mat-card-title>
+          <mat-card-subtitle>{{item.nome}}</mat-card-subtitle>
+          <mat-card-content>
+            <p>Email:{{item.email}}</p>
+            <p>CEP: {{item.cep}}</p>
+            <p>RG: {{item.rg}}</p>
+            <p>Data de Nascimento: {{item.dataNascimento}}</p>
+            <p>tipo: {{item.tipo}}</p>
+            
+          </mat-card-content>
+        </mat-card-header>
+        <mat-card-actions>
+        <div class="actions">
+            <button (click)="this.associarEmpresaFornecedor(item.id,idRotaEmpresa)" mat-raised-button color="accent">Associar</button>
+        </div>
+        </mat-card-actions>
+      </mat-card>
+      
+</div>

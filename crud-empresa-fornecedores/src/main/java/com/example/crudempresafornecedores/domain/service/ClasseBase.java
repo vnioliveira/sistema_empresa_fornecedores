@@ -13,21 +13,21 @@ import java.util.stream.Collectors;
 public abstract class ClasseBase {
     public EmpresaDTO buildEmpresaDTO(Empresa empresa) {
         return EmpresaDTO.builder()
+                .id(empresa.getId())
                 .cnpj(empresa.getCnpj())
                 .nomeFantasia(empresa.getNomeFantasia())
                 .cep(empresa.getCep())
-                .fornecedores(buildFornecedoresDTOs(empresa.getFornecedores()))
+                .estado(empresa.getEstado())
                 .build();
     }
-
     public List<Fornecedor> buildFornecedores(List<FornecedorDTO> fornecedores) {
         return fornecedores.stream()
                 .map(this::buildFornecedor)
                 .collect(Collectors.toList());
     }
-
     public FornecedorDTO buildFornecedorDTO(Fornecedor fornecedor) {
         return FornecedorDTO.builder()
+                .id(fornecedor.getId())
                 .cnpjCpf(fornecedor.getCnpjCpf())
                 .nome(fornecedor.getNome())
                 .email(fornecedor.getEmail())
@@ -37,13 +37,13 @@ public abstract class ClasseBase {
                 .empresas(buildEmpresasDTOs(fornecedor.getEmpresas()))
                 .build();
     }
-
     public Fornecedor buildFornecedor(FornecedorDTO dto) {
         List<Empresa> empresas = null;
         if(dto.getEmpresas()!= null){
             empresas = buildEmpresas(dto.getEmpresas());
         }
         return Fornecedor.builder()
+                .id(dto.getId())
                 .cnpjCpf(dto.getCnpjCpf())
                 .nome(dto.getNome())
                 .email(dto.getEmail())
@@ -54,7 +54,6 @@ public abstract class ClasseBase {
                 .empresas(empresas)
                 .build();
     }
-
     public Fornecedor buildPostFornecedor(PostFonecedorDTO dto) {
         return Fornecedor.builder()
                 .cnpjCpf(dto.getCnpjCpf())
@@ -85,6 +84,7 @@ public abstract class ClasseBase {
             fornecedores = buildFornecedores(empresaDTO.getFornecedores());
         }
         return Empresa.builder()
+                .id(empresaDTO.getId())
                 .cnpj(empresaDTO.getCnpj())
                 .nomeFantasia(empresaDTO.getNomeFantasia())
                 .cep(empresaDTO.getCep())

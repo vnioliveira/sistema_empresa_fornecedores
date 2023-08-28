@@ -12,6 +12,9 @@ import java.util.List;
 public class EmpresaDTO {
     @NotNull
     @NotBlank
+    private Long id;
+    @NotNull
+    @NotBlank
     private String cnpj;
     @NotNull
     @NotBlank

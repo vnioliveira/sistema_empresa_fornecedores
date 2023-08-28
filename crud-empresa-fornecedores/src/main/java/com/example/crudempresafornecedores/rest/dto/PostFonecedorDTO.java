@@ -5,7 +5,8 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
+import java.util.Date;
+
 @Data
 @Builder
 public class PostFonecedorDTO {
@@ -26,7 +27,7 @@ public class PostFonecedorDTO {
     private String rg;
     @NotNull
     @NotBlank
-    private LocalDate dataNascimento;
+    private Date dataNascimento;
     @NotNull
     @NotBlank
     private String tipo;

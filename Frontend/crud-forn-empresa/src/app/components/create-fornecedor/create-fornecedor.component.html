@@ -1,0 +1,50 @@
+<form>
+    <div class="formulario">
+
+        <h1>Criando Novo Fornecedor</h1>
+        
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Nome </mat-label>
+            <input [(ngModel)]="fornecedor.nome"  name="fornecedor.nome" matInput placeholder="Ex. jose da silva">
+        </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>CNPJ/CPF</mat-label>
+                    <input [(ngModel)]="fornecedor.cnpjCpf" name="fornecedor.cnpjCpf" matInput placeholder="Ex. 00.000.000/0000-00" >
+                </mat-form-field>
+        
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input [(ngModel)]="fornecedor.email" name="fornecedor.email" matInput placeholder="Ex. jose@email.com">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>CEP</mat-label>
+                <input [(ngModel)]="fornecedor.cep" name="fornecedor.cep" matInput placeholder="Ex. jose@email.com">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>RG</mat-label>
+                <input [(ngModel)]="fornecedor.rg" name="fornecedor.rg" matInput placeholder="Ex. jose@email.com">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Data de Nascimento</mat-label>
+                <input [(ngModel)]="fornecedor.dataNascimento" name="fornecedor.dataNascimento" matInput [matDatepicker]="picker" placeholder="Ex. jose@email.com">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>tipo:Pessoa Física/Pessoa Jurídica</mat-label>
+                <input [(ngModel)]="fornecedor.tipo" name="fornecedor.tipo" matInput placeholder="Ex. jose@email.com">
+            </mat-form-field>
+
+        <div class="buttons">
+            <button (click)="criar()" mat-stroked-button color="primary">CRIAR</button>
+            <button (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
+
+        </div>
+    </div>
+
+</form>

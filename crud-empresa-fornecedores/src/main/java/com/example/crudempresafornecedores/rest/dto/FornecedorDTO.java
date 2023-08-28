@@ -6,14 +6,16 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Data
 @Builder
 @ValidacaoEmpresaFornecedor
 public class FornecedorDTO {
-
+    @NotNull
+    @NotBlank
+    private Long id;
     @NotNull
     @NotBlank
     private String cnpjCpf;
@@ -31,7 +33,7 @@ public class FornecedorDTO {
     private String rg;
     @NotNull
     @NotBlank
-    private LocalDate dataNascimento;
+    private Date dataNascimento;
     @NotNull
     @NotBlank
     private String tipo;

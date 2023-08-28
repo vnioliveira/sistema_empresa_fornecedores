@@ -1,0 +1,33 @@
+<form>
+    <div class="formulario">
+
+        <h1>Editando empresa {{empresa.nomeFantasia}}</h1>
+        
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Nome Fantasia</mat-label>
+            <input [(ngModel)]="empresa.nomeFantasia"  name="empresa.nomeFantasia" matInput placeholder="Ex. Empresa.LTDA">
+        </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>CEP</mat-label>
+                    <input [(ngModel)]="empresa.cep"  name="empresa.cep" matInput placeholder="Ex. 00000-000" >
+                </mat-form-field>
+       
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>CNPJ</mat-label>
+                    <input [(ngModel)]="empresa.cnpj"  name="empresa.cnpj" matInput placeholder="Ex. 00.000.000/0000-00" >
+                </mat-form-field>
+        
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Estado</mat-label>
+                <input [(ngModel)]="empresa.estado"  name="empresa.estado" matInput placeholder="Ex. São Paulo">
+            </mat-form-field>
+
+        <div class="buttons">
+            <button (click)="atualizarEmpresa(idRotaEmpresa,empresa)" mat-stroked-button color="primary">CRIAR</button>
+            <button (click)="cancel()" mat-stroked-button color="warn">CANCELAR</button>
+
+        </div>
+    </div>
+
+</form>

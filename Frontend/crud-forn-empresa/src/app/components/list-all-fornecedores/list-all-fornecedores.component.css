@@ -1,0 +1,18 @@
+.info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .info-item {
+    flex: 1;
+    width: calc(50% - 5px); /* Para ocupar metade da largura com um espaçamento de 10px entre as colunas */
+  }
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    color: #AF284B;
+}

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="buttons">
+    <button (click)="novaEmpresa()" mat-stroked-button color="primary">Nova Empresa</button>
+    <button (click)="novoFornecedor()" mat-stroked-button color="primary">Novo Fornecedor</button>
+    <button routerLink="fornecedores" mat-stroked-button color="warn">Gerenciar Fornecedores</button>
+  </div>
+
+    <div class="content" *ngFor="let item of empresas">
+        <mat-card class="mat-elevation-z8">
+            <mat-card-header>
+              <mat-card-title>{{item.nomeFantasia}}</mat-card-title>
+              <mat-card-subtitle>{{item.estado}}</mat-card-subtitle>
+              <mat-card-content>
+                <p>CNPJ: {{item.cnpj}}</p>
+                <p>CEP: {{item.cep}}</p>
+              </mat-card-content>
+            </mat-card-header>
+            <div class="actions">
+                <button  routerLink="/fornecedores/desac/{{item.id}}" mat-raised-button color="primary">Associar Fornecedor</button>
+                <button routerLink="fornecedor-empresa/{{item.id}}" mat-raised-button color="accent">Listar fonecedores Associados</button>
+                <button routerLink="editar-empresa/{{item.id}}"  mat-mini-fab color="accent">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button (click)="delete(item.id)" mat-mini-fab color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+          </mat-card>
+          
+    </div>
+</div>
