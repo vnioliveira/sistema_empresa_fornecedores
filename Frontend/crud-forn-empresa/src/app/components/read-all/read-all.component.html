@@ -11,8 +11,8 @@
               <mat-card-title>{{item.nomeFantasia}}</mat-card-title>
               <mat-card-subtitle>{{item.estado}}</mat-card-subtitle>
               <mat-card-content>
-                <p>CNPJ: {{item.cnpj}}</p>
-                <p>CEP: {{item.cep}}</p>
+                <p>CNPJ: {{item.cnpj | mask:'00.000.000/0000-00'}}</p>
+                <p>CEP: {{item.cep | mask: '00000-000'}}</p>
               </mat-card-content>
             </mat-card-header>
             <div class="actions">

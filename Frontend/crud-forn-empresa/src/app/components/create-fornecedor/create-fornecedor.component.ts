@@ -32,7 +32,7 @@ export class CreateFornecedorComponent {
       .subscribe(
         () => {
           console.log('Fornecedor cadastrado com sucesso!');
-          this.cancel;
+          this.router.navigate([""]);
         },
         error => {
           console.error('Erro ao cadastrar fornecedor:', error);

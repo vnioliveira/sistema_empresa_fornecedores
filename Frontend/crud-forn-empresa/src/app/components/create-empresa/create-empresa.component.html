@@ -10,13 +10,16 @@
 
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>CEP</mat-label>
-                    <input [(ngModel)]="empresa.cep"  name="empresa.cep" matInput placeholder="Ex. 00000-000" >
-                </mat-form-field>
+                    <input [(ngModel)]="empresa.cep" name="fornecedor.cep" matInput
+                           placeholder="Ex. 00000-000" mask="00000-000">
+                  </mat-form-field>
        
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>CNPJ</mat-label>
-                    <input [(ngModel)]="empresa.cnpj"  name="empresa.cnpj" matInput placeholder="Ex. 00.000.000/0000-00" >
-                </mat-form-field>
+                    <input [(ngModel)]="empresa.cnpj" name="empresa.cnpj" matInput
+                           placeholder="Ex. 00.000.000/0000-00" mask="00.000.000/0000-00">
+                  </mat-form-field>
+                  
         
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Estado</mat-label>

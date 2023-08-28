@@ -11,7 +11,7 @@
     </mat-form-field>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>RG</mat-label>
-        <input [(ngModel)]="filtroCnpjCpf"  (input)="carregarFornecedoresPorCnpjCpf()" name="fornecedor.rg" matInput  placeholder="Filtrar por CNPJ/CPF">
+        <input [(ngModel)]="filtroCnpjCpf"  (input)="carregarFornecedoresPorCnpjCpf()" name="fornecedor.rg" matInput  placeholder="Filtrar por CNPJ/CPF" mask="00.000.000-0">
     </mat-form-field>
      
     </div>
@@ -30,19 +30,20 @@
             <strong>Email:</strong> {{ item.email }}
           </div>
           <div class="info-item">
-            <strong>CEP:</strong> {{ item.cep }}
+            <strong>CEP:</strong> {{ item.cep | mask: '00000-000' }}
           </div>
           <div class="info-item">
-            <strong>RG:</strong> {{ item.rg }}
+            <strong>RG:</strong> {{ item.rg | mask: '00.000.000-0' }}
           </div>
           <div class="info-item">
-            <strong>Data de Nascimento:</strong> {{ item.dataNascimento }}
+            <strong>Data de Nascimento:</strong> {{ item.dataNascimento | mask: '00/00/0000' }}
           </div>
           <div class="info-item">
             <strong>Tipo:</strong> {{ item.tipo }}
           </div>
         </div>
       </mat-card-content>
+      
       <mat-card-actions>
 
         <button routerLink="editar-fornecedor/{{item.id}}"  mat-mini-fab color="accent">

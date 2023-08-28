@@ -8,13 +8,25 @@
           <mat-card-title>{{item.cnpjCpf}}</mat-card-title>
           <mat-card-subtitle>{{item.nome}}</mat-card-subtitle>
           <mat-card-content>
-            <p>Email:{{item.email}}</p>
-            <p>CEP: {{item.cep}}</p>
-            <p>RG: {{item.rg}}</p>
-            <p>Data de Nascimento: {{item.dataNascimento}}</p>
-            <p>tipo: {{item.tipo}}</p>
-            
+            <div class="info">
+              <div class="info-item">
+                <strong>Email:</strong> {{ item.email }}
+              </div>
+              <div class="info-item">
+                <strong>CEP:</strong> {{ item.cep | mask: '00000-000' }}
+              </div>
+              <div class="info-item">
+                <strong>RG:</strong> {{ item.rg | mask: '00.000.000-0' }}
+              </div>
+              <div class="info-item">
+                <strong>Data de Nascimento:</strong> {{ item.dataNascimento | mask: '00/00/0000' }}
+              </div>
+              <div class="info-item">
+                <strong>Tipo:</strong> {{ item.tipo }}
+              </div>
+            </div>
           </mat-card-content>
+          
         </mat-card-header>
         <mat-card-actions>
         <div class="actions">

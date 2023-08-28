@@ -28,7 +28,7 @@ import { ListFornecedorComponent } from './components/list-fornecedor/list-forne
 import { ListarFornDesasocciadosComponent } from './components/listar-forn-desasocciados/listar-forn-desasocciados.component';
 import { ListAllFornecedoresComponent } from './components/list-all-fornecedores/list-all-fornecedores.component';
 import { EditarFornecedorComponent } from './components/editar-fornecedor/editar-fornecedor.component';
-
+import { NgxMaskModule } from 'ngx-mask';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +62,7 @@ import { EditarFornecedorComponent } from './components/editar-fornecedor/editar
     MatDatepickerModule,
     MatNativeDateModule,
     InputMaskModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
